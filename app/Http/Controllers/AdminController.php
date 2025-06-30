@@ -13,7 +13,8 @@ class AdminController extends Controller
         if(Auth::id()){
             $usertype = Auth()->user()->usertype;
             if($usertype == 'user'){
-                return view('home.index');
+                $data = Room::all();
+                return view('home.index', ['data'=>$data]);
             }else if($usertype == 'admin'){
                 return view('admin.index');
             } else {
@@ -23,7 +24,8 @@ class AdminController extends Controller
     }
 
     public function home(){
-        return view('home.index');
+        $data = Room::all();
+        return view('home.index', ['data'=>$data]);
     }
 
     public function create_room(){
@@ -44,10 +46,38 @@ class AdminController extends Controller
             $data->image = $imagename;
         }
         $data->save();
-        return redirect()->back();
+        return redirect('view_room');
     }
 
     public function view_room(){
-        return view('admin.view_room');
+        $data = Room::all();
+        return view('admin.view_room',['data' => $data]);
+    }
+    public function delete_room($id){
+        $data = Room::destroy($id);
+        return redirect()->back();
+    }
+
+    public function edit_room($id){
+        $data = Room::find($id);
+        return view('admin.edit_room', ['data'=>$data]);
+    }
+
+    public function update_room(Request $request, $id){
+        $data = Room::find($id);
+        $data->room_title = $request->title;
+        $data->description = $request->description;
+        $data->price = $request->price;
+        $data->wifi = $request->wifi;
+        $data->room_type = $request->room_type;
+        $image = $request->image;
+        if($image){
+            $imagename = time().'.'.$image->getClientOriginalExtension();;
+            $request->image->move('room', $imagename);
+            $data->image = $imagename;
+        }
+        $data->save();
+        // return redirect()->back();
+           return redirect('view_room');
     }
 }

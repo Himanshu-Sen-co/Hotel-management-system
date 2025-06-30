@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head> 
+    <base href='/public'>
     @include('admin.css')
     <style>
     label {
@@ -40,6 +41,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-wrap: wrap
     }
 
     .main_div {
@@ -81,28 +83,28 @@
           <div class="container-fluid">
 
             <div class="main_div">
-                <h1 style="font-size: 30px; font-weight:700; ">Add Rooms</h1>
-                <form action="{{url('add_room')}}" method="post" enctype="multipart/form-data">
+                <h1 style="font-size: 30px; font-weight:700; ">Update Room</h1>
+                <form action="{{url('edit_room',$data->id)}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="div_deg">
                         <label for="title">Room Title -</label>
-                        <input type="text" name="title" id="title">
+                        <input type="text" name="title" id="title" value="{{$data->room_title}}">
                     </div>
                     <div class="div_deg">
                         <label for="description"> Description -</label>
-                        <textarea name="description" id="description" ></textarea>                    
+                        <textarea name="description" id="description" >{{$data->description}}</textarea>                    
                     </div>
                     <div class="div_deg">
                         <label for="price">Price -</label>
-                        <input type="number" name="price" id="price">
+                        <input type="number" name="price" id="price" value="{{$data->price}}">
                     </div>
                      <div class="div_deg">
                         <label for="room_type">Room Type -</label>
                         <select name="room_type" id="room_type">
 
-                            <option selected value="regular">Regular</option>
-                            <option value="premium">Premium</option>
-                            <option value="deluxe">Deluxe</option>
+                            <option  {{ $data->room_type == 'regular' ? 'selected' : '' }} value="regular">Regular</option>
+                            <option {{ $data->room_type == 'premium' ? 'selected' : '' }} value="premium">Premium</option>
+                            <option {{ $data->room_type == 'deluxe' ? 'selected' : '' }} value="deluxe">Deluxe</option>
 
                         </select>
                     </div>
@@ -110,17 +112,24 @@
                         <label for="wifi">Free Wifi -</label>
                         <select name="wifi" id="wifi">
 
-                            <option selected value="yes">Yes</option>
-                            <option value="no">No</option>
+                            <option {{ $data->wifi == 'yes' ? 'selected' : '' }} value="yes">Yes</option>
+                            <option {{ $data->wifi == 'no' ? 'selected' : '' }} value="no">No</option>
 
                         </select>
+                    </div>
+                    <div class="div_deg" style="gap: 22%">
+                        <label for="image">Current Image</label>
+                        <img width="200" src="room/{{$data->image}}" alt="image">
                     </div>
                     <div class="div_deg">
                         <label for="image">Upload Image</label>
                         <input type="file" name="image" id="image">
                     </div>
                    <div class="div_deg">
-                        <input class="btn btn-primary" type="submit" value="Add Room">
+                        <input class="btn btn-primary" style="margin-right: 15px;" type="submit" value="Update Room">
+                        <button class="btn btn-secondary">
+                            <a href="{{url('view_room')}}">Cancel</a>
+                        </button>
                     </div>
                 </form>
             </div>
