@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head> 
+    <base href="/public">
     @include('admin.css')
-    <style>
+     <style>
         label {
             display: inline-block;
             width: 200px;
@@ -76,59 +77,42 @@
   <body>
     @include('admin.header')
     @include('admin.sidebar')
-    <div class="page-content">
+        <div class="page-content">
         <div class="page-header">
-          <div class="container-fluid">
-
-            <div class="main_div">
-                <h1 style="font-size: 30px; font-weight:700; ">Add Rooms</h1>
-                <form action="{{url('add_room')}}" method="post" enctype="multipart/form-data">
+        <div class="container-fluid">
+            <center>
+                <h1 style="font-size: 30px; font-weight:bold">Mail send to {{$message->name}}</h1>
+                <form action="{{url('mail',$message->id)}}" method="post">
                     @csrf
                     <div class="div_deg">
-                        <label for="title">Room Title -</label>
-                        <input type="text" name="title" id="title">
+                        <label for="greeting">Greeting -</label>
+                        <input type="text" name="greeting" id="greeting">
                     </div>
                     <div class="div_deg">
-                        <label for="description"> Description -</label>
-                        <textarea name="description" id="description" ></textarea>                    
+                        <label for="body"> Mail Body -</label>
+                        <textarea name="body" id="body" ></textarea>                    
                     </div>
                     <div class="div_deg">
-                        <label for="price">Price -</label>
-                        <input type="number" name="price" id="price">
-                    </div>
-                     <div class="div_deg">
-                        <label for="room_type">Room Type -</label>
-                        <select name="room_type" id="room_type">
-
-                            <option selected value="regular">Regular</option>
-                            <option value="premium">Premium</option>
-                            <option value="deluxe">Deluxe</option>
-
-                        </select>
-                    </div>
-                     <div class="div_deg">
-                        <label for="wifi">Free Wifi -</label>
-                        <select name="wifi" id="wifi">
-
-                            <option selected value="yes">Yes</option>
-                            <option value="no">No</option>
-
-                        </select>
+                        <label for="action_text">Action Text -</label>
+                        <input type="text" name="action_text" id="action_text">
                     </div>
                     <div class="div_deg">
-                        <label for="image">Upload Image</label>
-                        <input type="file" name="image" id="image">
+                        <label for="action_url">Action Url -</label>
+                        <input type="text" name="action_url" id="action_url">
+                    </div>
+                    <div class="div_deg">
+                        <label for="end_line">End Line -</label>
+                        <input type="text" name="end_line" id="end_line">
                     </div>
                    <div class="div_deg">
-                        <input class="btn btn-primary" type="submit" value="Add Room">
+                        <input class="btn btn-info" type="submit" value="Send Mail">
                     </div>
                 </form>
-            </div>
+            </center>
 
-          </div>
-          </div>
-          </div>
-
+        </div>
+    </div>
+    </div>
     @include('admin.footer')
   </body>
 </html>

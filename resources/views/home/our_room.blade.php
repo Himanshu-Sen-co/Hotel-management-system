@@ -17,35 +17,11 @@
     @include('home.header')
       </header>
       <!-- end header inner -->
-      <!-- end header -->
-      <!-- banner -->
-    @include('home.banner')
-      <!-- end banner -->
-      <!-- about -->
-    @include('home.about')
-      <!-- end about -->
       <!-- our_room -->
     @include('home.room')
       <!-- end our_room -->
-      <!-- gallery -->
-    @include('home.gallery')
-      <!-- end gallery -->
-      <!--  contact -->
-    @include('home.contact')
-      <!-- end contact -->
       <!--  footer -->
     @include('home.footer')
-    <script>
-      $(window).scroll(function(){
-        sessionStorage.scrollTop = $(this).scrollTop();
-      });
-
-      $(document).ready(function(){
-        if(sessionStorage.scrollTop != 'undefined'){
-          $(window).scrollTop(sessionStorage.scrollTop);
-        }
-      });
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
    </body>
 </html>

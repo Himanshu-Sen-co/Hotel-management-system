@@ -33,6 +33,7 @@
       <div class="page-content">
         <div class="page-header">
           <div class="container-fluid">
+            <div style="overflow-x: auto">
             <h1 style="font-size: 30px; font-weight:700; ">Your all room listed here:</h1>
             <table class="view-table">
                 <tr>
@@ -62,6 +63,7 @@
                     </tr>
                 @endforeach
             </table>
+            </div>
           </div>
         </div>
       </div>

@@ -44,5 +44,6 @@
                 </x-button>
             </div>
         </form>
+        <p style="text-align: center;">Don't have account, <a style="color: skyblue" href="{{url('register')}}">  Register Here </a>  </p>
     </x-authentication-card>
 </x-guest-layout>

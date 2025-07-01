@@ -1,12 +1,12 @@
       <div class="page-content">
         <div class="page-header">
           <div class="container-fluid">
-            <h2 class="h5 no-margin-bottom">Dashboard</h2>
+            <h2 class="h5 no-margin-bottom">Admin Dashboard</h2>
           </div>
         </div>
         <section class="no-padding-top no-padding-bottom">
           <div class="container-fluid">
-            <div class="row">
+            {{-- <div class="row">
               <div class="col-md-3 col-sm-6">
                 <div class="statistic-block block">
                   <div class="progress-details d-flex align-items-end justify-content-between">
@@ -59,10 +59,10 @@
                   </div>
                 </div>
               </div>
-            </div>
+            </div> --}}
           </div>
         </section>
-        <section class="no-padding-bottom">
+        {{-- <section class="no-padding-bottom">
           <div class="container-fluid">
             <div class="row">
               <div class="col-lg-4">
@@ -80,7 +80,7 @@
               </div>
             </div>
           </div>
-        </section>
+        </section> --}}
         <section class="no-padding-bottom">
           <div class="container-fluid">
             <div class="row">
